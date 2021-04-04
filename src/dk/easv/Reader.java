@@ -1,8 +1,10 @@
 package dk.easv;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 
-public abstract class Reader {
+public abstract class Reader implements Observer {
 
     private String name;
     private Publisher publisher;
@@ -26,5 +28,10 @@ public abstract class Reader {
 
         Article article = articles[random.nextInt(articles.length)];
         System.out.println("\033[1;34m" + "Reader named " + name + " is reading article with title '" + article.getTitle() + "'." + "\033[0m");
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        read();
     }
 }

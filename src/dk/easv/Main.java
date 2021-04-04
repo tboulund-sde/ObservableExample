@@ -24,14 +24,20 @@ public class Main {
 
     public static void main(String[] args) {
 
+        publisher.addObserver(readers[0]);
+        publisher.addObserver(readers[1]);
+        publisher.addObserver(readers[2]);
+        publisher.addObserver(readers[3]);
+
         publisher.release(currentIssue);
-        for(Reader reader : readers) {
+        publisher.release(nextIssue);
+        /*for(Reader reader : readers) {
             reader.read();
         }
         readers[0].read();
 
         publisher.release(nextIssue);
         readers[0].read();
-        readers[0].read();
+        readers[0].read();*/
     }
 }
