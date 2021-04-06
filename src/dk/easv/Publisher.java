@@ -12,7 +12,4 @@ public class Publisher {
     public Newspaper getLatestIssue() {
         return papers.peek();
     }
-
-
-
 }
