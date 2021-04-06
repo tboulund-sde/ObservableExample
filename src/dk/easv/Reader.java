@@ -1,10 +1,8 @@
 package dk.easv;
 
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Random;
 
-public abstract class Reader implements Observer {
+public abstract class Reader implements ISubscriber<Newspaper> {
 
     private String name;
     private Publisher publisher;
@@ -16,13 +14,13 @@ public abstract class Reader implements Observer {
     }
 
     public void read() {
-        Newspaper latest = publisher.getLatestIssue();
+        /*Newspaper latest = publisher.getLatestIssue();
         if(latest == null || latest.equals(myIssue)) {
             System.out.println("\033[1;31m" + "Reader named " + name + " is sad because he already read the latest news." + "\033[0m");
             return;
         }
 
-        myIssue = latest;
+        myIssue = latest*/
         Article[] articles = myIssue.getArticles();
         Random random = new Random();
 
@@ -31,7 +29,9 @@ public abstract class Reader implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Subscribable publisher, Newspaper newspaper) {
+        myIssue = newspaper;
+        System.out.println("Reader named " + name + " received the newest release.");
         read();
     }
 }

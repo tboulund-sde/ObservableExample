@@ -1,21 +1,16 @@
 package dk.easv;
 
-import java.util.Observable;
 import java.util.Stack;
 
-public class Publisher extends Observable {
+public class Publisher extends Subscribable<Newspaper> {
     private final Stack<Newspaper> papers = new Stack<>();
 
     public void release(Newspaper newspaper) {
         papers.push(newspaper);
-        setChanged();
-        notifyObservers(newspaper);
+        notifySubscribers(newspaper);
     }
 
     public Newspaper getLatestIssue() {
         return papers.peek();
     }
-
-
-
 }

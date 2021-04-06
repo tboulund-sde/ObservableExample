@@ -24,10 +24,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        publisher.addObserver(readers[0]);
-        publisher.addObserver(readers[1]);
-        publisher.addObserver(readers[2]);
-        publisher.addObserver(readers[3]);
+        publisher.subscribe(readers[0]);
+        publisher.subscribe(readers[1]);
+        publisher.subscribe(readers[2]);
+        publisher.subscribe(readers[3]);
 
         publisher.release(currentIssue);
         publisher.release(nextIssue);
